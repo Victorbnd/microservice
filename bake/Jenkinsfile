@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage ('git push'){
+            steps {
+                git branch: 'main', url: 'https://github.com/Victorbnd/microservice.git'
+            }   
+        }
+
+        stage ('build') {
+            steps {
+                sh 'docker build -t flask .'
+            }
+        }
+    }
+}
